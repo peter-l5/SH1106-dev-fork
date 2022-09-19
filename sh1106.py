@@ -143,6 +143,8 @@ class SH1106(framebuf.FrameBuffer):
 
     def sleep(self, value):
         self.write_cmd(_SET_DISP | (not value))
+        if (not value):
+            time.sleep_ms(100)
 
     def contrast(self, contrast):
         self.write_cmd(_SET_CONTRAST)
